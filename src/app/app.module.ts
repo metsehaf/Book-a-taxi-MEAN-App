@@ -38,7 +38,7 @@ import {PusherModule} from './pusher/pusher.module';
     SearchModule,
     PusherModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyD6OLSkDZ9C6Sjl8W4wy2wulezebTyKi-E&v=3',
+      apiKey: 'google-maps-api-key',
       libraries: ['places']
     })
   ],
