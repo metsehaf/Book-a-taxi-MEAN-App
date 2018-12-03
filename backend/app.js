@@ -11,7 +11,7 @@ const app = express();
 
 mongoose
   .connect(
-    "mongodb+srv://hagosgir:" + process.env.MONGO_ATLAS_PW + "@cluster0-xzsjx.mongodb.net/node-angular"
+    "mongodb+srv://USERNAME:" + process.env.MONGO_ATLAS_PW + "@cluster0-xzsjx.mongodb.net/node-angular"
   )
   .then(() => {
     console.log("Connected to database!");
