@@ -1,0 +1,21 @@
+taxi-booking {
+  height: 400px;
+  overflow: auto;
+}
+
+th {
+  cursor: pointer;
+}
+
+td {
+  width:44%;
+}
+
+thead {
+  background-color: #efefef;
+}
+
+filter-textbox {
+  font-size: 14px;
+  width: 100%;
+}

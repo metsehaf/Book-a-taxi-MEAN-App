@@ -1,0 +1,16 @@
+<form class="example-form" [formGroup]='studentsForm'>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Choose a student" [matAutocomplete]="auto" formControlName='studentInput'>
+  </mat-form-field>
+  <span>Your choice is: {{studentsForm.get('studentInput').value | json}}</span>
+
+  <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+    <mat-option *ngIf="isLoading" class="is-loading"><mat-spinner diameter="50"></mat-spinner></mat-option>
+    <ng-container *ngIf="!isLoading">
+      <mat-option *ngFor="let student of filteredstudents" [value]="student">
+        <span>{{ student.name }}</span>
+        <small> | ID: {{student.id}}</small>
+      </mat-option>
+    </ng-container>
+  </mat-autocomplete>
+</form>

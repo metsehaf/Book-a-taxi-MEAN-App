@@ -1,0 +1,54 @@
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<h1>{{ title }}</h1>
+<br />
+<!-- [posts]="posts" -->
+<!-- <app-post-table *ngIf="posts.length > 0 && !isLoading"></app-post-table> -->
+<app-filter-textbox (changed)="filter($event)"></app-filter-textbox>
+<br />
+<br />
+<table class="table table-hover" *ngIf="posts.length > 0 && !isLoading">
+    <thead>
+        <tr>
+            <th (click)="sort('title')">Student Name</th>
+            <th (click)="sort('routeNumber')">Route #</th>
+            <th (click)="sort('grade')">Student Grade</th>
+            <th (click)="sort('telephone')">Telephone</th>
+            <th (click)="sort('startDate')">Start Date</th>
+            <th (click)="sort('endDate')">End Date</th>
+            <th (click)="sort('pickUpTime')"> PickUp Time</th>
+            <th (click)="sort('dropOffTime ')">DropOff Time</th>
+            <th (click)="sort('pickUpAddress')">PickUp Address</th>
+            <th (click)="sort('schoolLocation')">Dropoff Address</th>
+            <th (click)="sort('approvedBy')">Approved By</th>
+            <th (click)="sort('mustBeMet')">Must Be Met</th>
+            <th (click)="sort('content')">Notes</th>
+
+        </tr>
+    </thead>
+    <tr *ngFor="let post of filteredPosts">
+        <td>
+            <a>
+                {{ post.title | capitalize }}
+            </a>
+        </td>
+        <td>{{ post.routeNumber }}</td>
+        <td>{{ post.grade }}</td>
+        <td>{{ post.telephone }}</td>
+        <td>{{ post.startDate | date}}</td>
+        <td>{{ post.endDate | date }}</td>
+        <td>{{ post.pickUpTime }}</td>
+        <td>{{ post.dropOffTime }}</td>
+        <td>{{ post.pickUpAddress}}</td>
+        <td>{{ post.schoolLocation}}</td>
+        <td>{{ post.approvedBy}}</td>
+        <td>{{ post.mustBeMet}}</td>
+        <td>{{ post.content}}</td>
+    </tr>
+    <tr *ngIf="!filteredPosts || !filteredPosts.length">
+        <td colspan="4">No students found</td>
+    </tr>
+</table>
+Number of Students: {{ filteredPosts.length }}
+<mat-paginator [length]="totalPosts" [pageSize]="postsPerPage" [pageSizeOptions]="pageSizeOptions" (page)="onChangedPage($event)"
+  *ngIf="posts.length > 0"></mat-paginator>
+<p class="info-text mat-body-1" *ngIf="posts.length <= 0 && !isLoading">No Bookings added yet!</p>

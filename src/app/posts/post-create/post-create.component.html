@@ -1,0 +1,80 @@
+<mat-card>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <form [formGroup]="form" (submit)="onSavePost()" *ngIf="!isLoading">
+    <mat-form-field>
+      <input matInput type="text" formControlName="title" placeholder="Student Name">
+      <mat-error *ngIf="form.get('title').invalid">Please enter a Student Name.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput type="text" formControlName="routeNumber" placeholder="Route Number">
+        <mat-error *ngIf="form.get('routeNumber').invalid">Please enter a Route Number.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput type="number" formControlName="grade" placeholder="Grade">
+        <mat-error *ngIf="form.get('grade').invalid">Please enter a Grade above 3,
+          you can't transport a student less than or equal to grade 3 on a taxi.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput [matDatepicker]="picker1" placeholder="Choose a start date" formControlName="startDate">
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput [matDatepicker]="picker2" placeholder="Choose an end date" formControlName="endDate">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="tel" formControlName="telephone" placeholder="telephone">
+      <!-- <mat-error *ngIf="form.get(telephone).invalid">Please enter a telephone.</mat-error> -->
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="time" formControlName="pickUpTime" placeholder="PickUp Time">
+      <!-- <mat-error *ngIf="form.get('pickUpTime').invalid">Please enter a Pickup Time.</mat-error> -->
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="time" formControlName="dropOffTime" placeholder="DropOff Time">
+      <!-- <mat-error *ngIf="form.get('dropOffTime').invalid">Please enter a Dropoff Time.</mat-error> -->
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="pickUp Address" autocorrect="off" autocapitalize="off" spellcheck="off" google-place type="text" formControlName="pickUpAddress"  (onSelect)="setAddress($event)">
+      <!-- <input matInput type="text" formControlName="pickUpAddress" placeholder="pickUp Address"> -->
+      <mat-error *ngIf="form.get('pickUpAddress').invalid">Please enter a Pickup Address.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="dropoff Address" autocorrect="off" autocapitalize="off" spellcheck="off" google-place type="text"  formControlName="schoolLocation"  (onSelect)="setAddress($event)">
+      <!-- <input matInput type="text" formControlName="schoolLocation" placeholder="school Name"> -->
+      <mat-error *ngIf="form.get('schoolLocation').invalid">Please enter a dropoff address.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <!-- <input matInput type="text" formControlName="approvedBy" placeholder="Approved By"> -->
+      <mat-select placeholder="Approved By" formControlName="approvedBy">
+          <mat-option *ngFor="let parent of parents" [value]="parent.value">
+            {{parent.viewValue}}
+          </mat-option>
+      </mat-select>
+      <!-- <mat-error *ngIf="form.get('approvedBy').invalid">Please enter who it was approvedBy.</mat-error> -->
+    </mat-form-field>
+    <mat-form-field>
+      <!-- <input matInput type="text" formControlName="mustBeMet" placeholder="Must Be Met"> -->
+      <mat-select placeholder="Must Be Met" formControlName="mustBeMet">
+          <mat-option *ngFor="let met of mets" [value]="met.value">
+            {{met.viewValue}}
+          </mat-option>
+      </mat-select>
+      <!-- <mat-error *ngIf="form.get('mustBeMet').invalid">Please enter (Yes/No) to show if student has to be met by a parent/ careholder.</mat-error> -->
+    </mat-form-field>
+    <div>
+      <button mat-stroked-button type="button" (click)="filePicker.click()">Pick Image</button>
+      <input type="file" #filePicker (change)="onImagePicked($event)">
+    </div>
+    <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview && form.get('image').valid">
+      <img [src]="imagePreview" [alt]="form.value.title">
+    </div>
+    <mat-form-field>
+      <textarea matInput rows="4" formControlName="content" placeholder="Add a Note"></textarea>
+      <!-- <mat-error *ngIf="form.get('content').invalid">Please enter a Note.</mat-error> -->
+    </mat-form-field>
+    <button mat-raised-button color="accent" type="submit">Save Post</button>
+  </form>
+</mat-card>

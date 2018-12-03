@@ -1,0 +1,34 @@
+<mat-toolbar color="primary">
+  <span *ngIf="!userIsAuthenticated">
+      <a routerLink="/">
+        <img src="assets/img/Sharp_Logo.jpg" alt="sharp Bus Lines" height="24px">
+      </a>
+  </span>
+  <span class="spacer"></span>
+  <ul>
+      <li *ngIf="userIsAuthenticated">
+          <a mat-button routerLink="/message" routerLinkActive="mat-accent">Message sharp</a>
+      </li>
+    <!-- <li *ngIf="userIsAuthenticated">
+      <a mat-button routerLink="/search" routerLinkActive="mat-accent">Search</a>
+    </li> -->
+    <li *ngIf="userIsAuthenticated">
+      <a mat-button routerLink="/list" routerLinkActive="mat-accent">Taxi Booking List</a>
+    </li>
+    <li *ngIf="userIsAuthenticated">
+      <a mat-button routerLink="/table" routerLinkActive="mat-accent">Taxi Booking Table</a>
+    </li>
+    <li *ngIf="userIsAuthenticated">
+      <a mat-button routerLink="/create" routerLinkActive="mat-accent">Create New Taxi Booking</a>
+    </li>
+    <p *ngIf="!userIsAuthenticated">
+      <a mat-button routerLink="/auth/login" routerLinkActive="mat-accent">Login</a>
+    </p>
+    <!-- <li *ngIf="!userIsAuthenticated">
+      <a mat-button routerLink="/auth/signup" routerLinkActive="mat-accent">Signup</a>
+    </li> -->
+    <li *ngIf="userIsAuthenticated">
+      <button mat-button (click)="onLogout()">Logout</button>
+    </li>
+  </ul>
+</mat-toolbar>
