@@ -10,8 +10,8 @@ import {Student, IStudentResponse} from './search.class';
 export class DataService {
 
     // Create an Observable that will create an AJAX request
-    readonly username = 'TSTGSharp';
-    readonly password = '7!8EU#xEz8=c88JH';
+    readonly username = 'USERNAME';
+    readonly password = 'PASSWORD';
     readonly headers = new HttpHeaders({
       'Authorization': 'Basic ' + btoa(`${this.username}:${this.password}`)
     });
