@@ -1,9 +1,9 @@
 {
   "env": {
-    "MONGO_ATLAS_PW": "De12_nzelGurage",
-    "JWT_KEY": "secret_this_should_be_longer",
-    "appId": "656433",
-    "key": "2047f03df71155bff833",
-    "secret": "faba1375d28edda9cf56"
+    "MONGO_ATLAS_PW": "XXXXXXXXX",
+    "JWT_KEY": "XXXXXXXXXXXXX",
+    "appId": "XXXXXX",
+    "key": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+    "secret": "XXXXXXXXXXXXXXXXXXXXXXXXXXXX"
   }
 }
