@@ -2,8 +2,8 @@
   "env": {
     "MONGO_ATLAS_PW": "XXXXXXXXX",
     "JWT_KEY": "XXXXXXXXXXXXX",
-    "appId": "XXXXXX",
-    "key": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-    "secret": "XXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+    "appId": "PUSHER_APP_ID",
+    "key": "PUSHER_KEY",
+    "secret": "PUSHER_SECRET"
   }
 }
